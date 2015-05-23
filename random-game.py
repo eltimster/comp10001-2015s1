@@ -80,16 +80,20 @@ def generate_random_game(rounds, bonus=False, verbatim=True):
             pred_scores.append(score)
             player_data.append(score)
         pred_scores = tuple(pred_scores)
+    else:
+        player_data = [None, None, None, None]
 
     prev_winner = 0
     for round_id in range(rounds):
         curr_trick = []
         for j in range(PLAYERS):
             player_id = (prev_winner + j) % PLAYERS
-            if bonus:
-                card, player_data[player_id] = program.play(curr_trick, players[player_id], prev_tricks, deck_top, player_data=player_data[player_id])
+            retval = program.play(curr_trick, players[player_id], prev_tricks, deck_top, player_data=player_data[player_id])
+            if type(retval) == tuple and len(retval) == 2:
+                card, player_data[player_id] = retval
             else:
-                card = program.play(curr_trick, players[player_id], prev_tricks, deck_top, suppress_player_data=True)
+                assert type(retval) == str
+                card = retval
             curr_trick.append(card)
             players[player_id].remove(card)
         curr_trick = tuple(curr_trick)
