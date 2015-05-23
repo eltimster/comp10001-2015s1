@@ -21,7 +21,7 @@
 # allocate to the winning player). For example:
 #
 # >>> get_winner_score(('2S', 'AS', 'QS', '7D'), 2, ['2D', '3S'])
-# (3, 13)
+# (3, 0)
 # >>> get_winner_score(('2S', 'AS', 'QS', '7D'), 4, ['2D', '3S', 'JS'])
 # (1, 13)
 #

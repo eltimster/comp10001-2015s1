@@ -6,6 +6,7 @@ test_cases = {
         ],
     "is_valid_play":
         [
+         ("""submission.is_valid_play('2H', ('4S', '0D'), ['2H', 'KH', 'QH', '5D', '8H', '8D', 'JD'], [('9H', '5H', '7H', 'JH'), ('QD', '2D', 'AD', 'KD'), ('3S', '2S', '8S', 'AS'), ('JC', '4C', '0C', '5C'), ('JS', '0S', '9S', 'QS'), ('6D', '4D', '9D','3D')])""", True),
         ],
 
     "score_game":
