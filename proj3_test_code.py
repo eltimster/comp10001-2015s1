@@ -3,9 +3,13 @@
 #
 # Author: Tim Baldwin
 #
-# Date: 8/5/2015
+# Date: 25/5/2015
 #
-# Version 1
+# Version 1.1
+#
+# Changelog:
+# v1.1: modified to add support for `play' (where don't care about the value of the second value
+#       in the 2-tuple, just whether it's there or not)
 
 
 
@@ -17,7 +21,7 @@ try:
     import tests  # import the file `tests.py'
     try:
         import tests_extra
-    except:
+    except ImportError:
         print("WARNING: No 'tests_extra.py' file found ... running only the tests in 'tests.py'\n")
 
 # exit if one of the above statements doesn't execute properly, presumably because `program.py' didn't import properly
@@ -59,7 +63,7 @@ def test(funct_name, testset):
         expval = test[1]
         
         # if the returned value is correct, increment `correct` and print a congratulatory print statement
-        if test_equivalent(userval,expval):
+        if test_equivalent(userval,expval,funct_name):
             correct += 1
             print("passed")
             
@@ -94,9 +98,18 @@ def test(funct_name, testset):
 # output(s): Boolean evaluation of the equivalence of the two arguments
 #
 
-def test_equivalent(a,b):
+def test_equivalent(a,b,funct_name):
     # we consider lists of lists to be the same as long as their contents are the same, 
     # ignoring order of both the outer and inner lists
+    if funct_name == 'play':
+        type_a = type(a)
+        type_b = type(b)
+        if type_a == type_b == str:
+            return a == b
+        elif type_a == type_b == tuple:
+            return a[0] == b[0]
+        else:
+            return False
     if isinstance(a, list) and isinstance(b, list):
         try:
             return as_setset(a) == as_setset(b)
@@ -148,6 +161,6 @@ if __name__ == "__main__":
     test_all(tests)
     try:
         test_all(tests_extra)
-    except:
+    except NameError:
         pass
 
