@@ -1,11 +1,12 @@
 # dictionary of extra tests, one for each function in the project spec; in each case, list a number of function calls (as a str), and the correct output for each
 
-# Version: 1.1
+# Version: 1.2
 # Updated 25/5/15
 #
 # Changelog:
 #
 # v1.1: tweaks to test cases to test optional arguments
+# v1.2: fix to first test case for `play' to make first argument a tuple
 
 test_cases = {
     "is_broken_hearts":
