@@ -29,7 +29,7 @@ test_cases = {
 
     "play":
         [
-         ("""submission.play(['8C'], ['KH', '7C', '2S', '6S', 'JS', '0D', '8H', '3S'], [('AC', '3C', '0C', '6C'), ('KD', '8D', '5D', '4D'), ('JH', '0H', '5H', '2H'), ('AS', 'KS', 'QS', '9S'), ('3D', '9D', 'JD', '7D')], ['JH', 'AS', '7S'], suppress_player_data=True)""", '7C'),
+         ("""submission.play(('8C',), ['KH', '7C', '2S', '6S', 'JS', '0D', '8H', '3S'], [('AC', '3C', '0C', '6C'), ('KD', '8D', '5D', '4D'), ('JH', '0H', '5H', '2H'), ('AS', 'KS', 'QS', '9S'), ('3D', '9D', 'JD', '7D')], ['JH', 'AS', '7S'], suppress_player_data=True)""", '7C'),
          # test case of suppress_player_data=False (in which case function should return a 2-tuple)
          ("""submission.play(('KC', '0C'), ['QD', 'JS', '7H', 'AS', 'AH', '4C', '8H', '3D', 'KD', 'QS'], [('9C', '5C', '7C', 'JC')], ['2S', 'JH'], suppress_player_data=False)""", ('4C', None)),
          # test to make sure code handles optional arguments
